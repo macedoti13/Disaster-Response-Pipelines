@@ -126,7 +126,7 @@ def evaluate_model(model, X_test, Y_test):
 
 
 def save_model(model, model_filepath):
-    """Saves a machien learning model for reusing 
+    """Saves a machine learning model for reusing 
 
     Args:
         model (obj): the model that will be saved
