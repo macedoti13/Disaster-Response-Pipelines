@@ -133,7 +133,7 @@ def save_model(model, model_filepath):
         model_filepath (str): the filepath for the model's file 
     """
     # opens pickle file to save the model 
-    with open(model_filepath) as file:
+    with open(model_filepath, 'wb') as file:
         pickle.dump(model, file)
 
 
