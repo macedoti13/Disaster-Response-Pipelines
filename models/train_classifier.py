@@ -1,4 +1,4 @@
-from copyreg import pickle
+import pickle
 import sys
 from sqlalchemy import create_engine
 from sklearn.model_selection import train_test_split, GridSearchCV
@@ -16,7 +16,7 @@ import re
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-nltk.download(['punkt', 'wordnet', 'stopwords'])
+nltk.download(['punkt', 'wordnet', 'stopwords', 'omw-1.4'])
 
 
 def load_data(database_filepath):
@@ -151,7 +151,7 @@ def main():
         model.fit(X_train, Y_train)
         
         print('Evaluating model...')
-        evaluate_model(model, X_test, Y_test, category_names)
+        evaluate_model(model, X_test, Y_test)
 
         print('Saving model...\n    MODEL: {}'.format(model_filepath))
         save_model(model, model_filepath)
