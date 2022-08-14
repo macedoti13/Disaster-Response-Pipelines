@@ -39,12 +39,22 @@ model = joblib.load("../models/classifier.pkl")
 def index():
     
     # extract data needed for visuals
+    # visual 1
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
 
+    # visual 2 
     categories_sum = df.iloc[:, 5:].sum().sort_values(ascending=False)
     categories_name = categories_sum.index.tolist()
-    
+
+    # visual 3
+    top_10_categories_sum = df.iloc[:, 5:].sum().sort_values(ascending=False)[:10]
+    top_10_categories_name = top_10_categories_sum.index.tolist()
+
+    # visual 4
+    botton_10_categories_sum = df.iloc[:, 5:].sum().sort_values(ascending=False)[-10:-1]
+    botton_10_categories_name = botton_10_categories_sum.index.tolist()
+
     # create visuals
     graphs = [
         {
@@ -75,6 +85,42 @@ def index():
 
             'layout': {
                 'tilte': 'Amount of Messages for Each Category',
+                'yaxis': {
+                    'title': 'Amount of Messages'
+                },
+                'xaxis': {
+                    'title': 'Categories'
+                }
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x = top_10_categories_name,
+                    y = top_10_categories_sum
+                )
+            ],
+
+            'layout': {
+                'title': 'Top 10 Most Commom Messages Categories',
+                'yaxis': {
+                    'title': 'Amount of Messages'
+                },
+                'xaxis': {
+                    'title': 'Categories'
+                }
+            }
+        },
+        {
+            'data': [ 
+                Bar(
+                    x = botton_10_categories_name,
+                    y = botton_10_categories_sum
+                )
+            ],
+
+            'layout': {
+                'title': 'Least Commom Messages Categories',
                 'yaxis': {
                     'title': 'Amount of Messages'
                 },
