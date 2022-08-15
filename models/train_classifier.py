@@ -112,11 +112,8 @@ def evaluate_model(model, X_test, Y_test):
     # iterates through columns to show results in each category
     i = 0
     for col in Y_test:
-        # prints confusion matrix
-        plt.title(f'Feature: {col}')
-        sns.heatmap(confusion_matrix(Y_test[col], Y_pred[:,i]))
-        plt.show()
         # prints classification report
+        print(f'Feature: {col}')
         print(classification_report(Y_test[col], Y_pred[:,i], zero_division=0))
         i+=1
     # computes model's general accuracy 
