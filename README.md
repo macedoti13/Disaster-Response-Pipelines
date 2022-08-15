@@ -1,6 +1,5 @@
 # Disaster Response Pipelines
 ### Udacity's Data Scientist Nanodegree Project
--------------------------
 
 ## Table of Contents 
 1. [Project Overview](#overview)
