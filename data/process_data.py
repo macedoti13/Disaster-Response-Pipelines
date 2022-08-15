@@ -59,7 +59,7 @@ def clean_data(df):
     df.drop('categories', axis=1, inplace=True)
 
     # change rows where related = 2 to 1
-    df[df['related']==2] = 1
+    categories['related'].mask(categories['related'] == 2 ,1, inplace=True)
 
     # concats categories and df 
     df = pd.concat([df, categories], axis=1)
